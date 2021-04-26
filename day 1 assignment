@@ -1,3 +1,4 @@
+//Queries
 
 SQL> select sysdate from dual;
 
