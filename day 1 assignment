@@ -31,3 +31,58 @@ TO_CHAR(SYSDATE+10
 06-MAY-21
 
 SQL>
+
+//creating tables and inserting rows
+
+
+SQL> create table stock(item varchar2(20), id int, batch int, nounits int, price int);
+
+Table created.
+
+SQL> create table sales(item varchar2(20), id int, batch int, nounits int, price int);
+
+Table created.
+
+SQL> insert into stock values('A',1,10,100,500);
+
+1 row created.
+
+SQL> insert into stock values('B',1,10,150,1000);
+
+1 row created.
+
+SQL> insert into stock values('C',3,25,50,399);
+
+1 row created.
+
+
+SQL> insert into sales values('A',1,25,50,399);
+
+1 row created.
+
+SQL> insert into sales values('B',1,25,50,450);
+
+1 row created.
+
+SQL> insert into sales values('C',5,10,150,599);
+
+1 row created.
+
+
+SQL> select *from stock;
+
+ITEM                         ID      BATCH    NOUNITS      PRICE
+-------------------- ---------- ---------- ---------- ----------
+A                             1         10        100        500
+B                             1         10        150       1000
+C                             3         25         50        399
+
+SQL> select *from sales;
+
+ITEM                         ID      BATCH    NOUNITS      PRICE
+-------------------- ---------- ---------- ---------- ----------
+A                             1         25         50        399
+B                             1         25         50        450
+C                             5         10        150        599
+
+SQL>
