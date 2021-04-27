@@ -1,0 +1,168 @@
+//CREATE THE EMPLOYEE TABLE WITH REQURED CONSTRAINTS
+
+SQL> create table emp
+  2  (fname varchar(10),
+  3  mname varchar(10),
+  4  lname varchar(10),
+  5  age int check(age between 0 and 50),
+  6  city varchar(15) check ((city like 'b%') or (city like 'B%')),
+  7  desg varchar(15),
+  8  empid varchar(5) primary key,
+  9  dob date);
+
+Table created.
+
+//INSERTION OF RECORDS
+
+SQL> insert into emp values('armaan','singh','malik','28','bhiwandi','acc','emp01','25-jan-92');
+
+1 row created.
+
+SQL> insert into emp values('begum','singh','gaurav','30','bhilai','acc','emp02','25-aug-90');
+
+1 row created.
+
+SQL> insert into emp values('joey','nigam','naayak','25','bhilai','sales','emp03','03-mar-95');
+
+1 row created.
+
+SQL> insert into emp values('gayatri','varma','behara','25','banglore','sales','emp04','10-sep-95');
+
+1 row created.
+
+SQL> insert into emp values('anirudh','singh','pathak','31','bhopal','acc','emp05','10-oct-90');
+
+1 row created.
+
+//DISPLAY RECORDS OF 'EMP' TABLE
+
+SQL> select *from emp;
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+armaan     singh      malik              28 bhiwandi        acc
+emp01 25-JAN-92
+
+begum      singh      gaurav             30 bhilai          acc
+emp02 25-AUG-90
+
+joey       nigam      naayak             25 bhilai          sales
+emp03 03-MAR-95
+
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+gayatri    varma      behara             25 banglore        sales
+emp04 10-SEP-95
+
+anirudh    singh      pathak             31 bhopal          acc
+emp05 10-OCT-90
+
+
+//UPDATE DESIGNATION COLUMN AS PER OUR CONVINIENCE
+
+SQL> update emp set desg=replace(desg,desg,desg||' manager');
+
+5 rows updated.
+
+SQL> select *from emp;
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+armaan     singh      malik              28 bhiwandi        acc manager
+emp01 25-JAN-92
+
+begum      singh      gaurav             30 bhilai          acc manager
+emp02 25-AUG-90
+
+joey       nigam      naayak             25 bhilai          sales manager
+emp03 03-MAR-95
+
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+gayatri    varma      behara             25 banglore        sales manager
+emp04 10-SEP-95
+
+anirudh    singh      pathak             31 bhopal          acc manager
+emp05 10-OCT-90
+
+// UPDATE A SINGLE RECORD
+
+SQL> update emp set city='belgaum' where fname='anirudh';
+
+1 row updated.
+
+// DELETE A SINGLE RECORD
+
+SQL> delete from emp where fname='joey';
+
+1 row deleted.
+
+// COMMIT
+
+SQL> commit;
+
+Commit complete.
+
+// DELETE ALL RECORDS
+
+SQL> delete from emp;
+
+4 rows deleted.
+
+SQL> select *from emp;
+
+no rows selected
+
+// RETRIEVE ALL RECORDS BY ROLLBACK
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select *from emp;
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+armaan     singh      malik              28 bhiwandi        acc manager
+emp01 25-JAN-92
+
+begum      singh      gaurav             30 bhilai          acc manager
+emp02 25-AUG-90
+
+gayatri    varma      behara             25 banglore        sales manager
+emp04 10-SEP-95
+
+
+FNAME      MNAME      LNAME             AGE CITY            DESG
+---------- ---------- ---------- ---------- --------------- ---------------
+EMPID DOB
+----- ---------
+anirudh    singh      pathak             31 belgaum         acc manager
+emp05 10-OCT-90
+
+// DISPLAY EMPLOYEE NAME AND DATE OF BIRTH AS PER OUR CONVENIENCE
+
+SQL> select substr(fname,1,1)||'.'||substr(mname,1,1)||' '||lname as "employee name",to_char(dob,'dd-mm-yyyy') as "date of birth" from emp;
+
+employee name        date of bi
+-------------------- ----------
+a.s malik            25-01-1992
+b.s gaurav           25-08-1990
+g.v behara           10-09-1995
+a.s pathak           10-10-1990
+
+SQL>
+
+//END
