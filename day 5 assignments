@@ -10,11 +10,10 @@ public class MyTasks {
 		for(int i=0;i<ar.length;++i)
 		{
 			if(ar[i]>=65 && ar[i]<=90)
-				flag=1;
+			{
+				return "yes";
+			}
 		}
-		if(flag==1)
-			return "yes";
-		else
 			return "no";
 	}
 	
@@ -25,7 +24,7 @@ public class MyTasks {
 		char[] ar=data.toCharArray();
 		for(int i=0;i<ar.length;++i)
 		{
-			if(ar[i]>=0 && ar[i]<9)
+			if(ar[i]>='0'&& ar[i]<='9')
 				flag=1;
 		}
 		if(flag==1)
@@ -66,6 +65,7 @@ public class MyTasks {
 	public static void main(String[] args) {
 		MyTasks myTasks = new MyTasks();
 		System.out.println(myTasks.hasUpper("Hello"));
+		System.out.println(myTasks.hasUpper("hi"));
 		System.out.println(myTasks.hasNumber("Navaneeth_33"));
 		System.out.println(myTasks.isCapsOnly("NaVaNeEtH"));
 		System.out.println(myTasks.isCapsOnly("NAVANEETH"));
@@ -73,9 +73,11 @@ public class MyTasks {
 	}
 }
 
+
 // OUTPUT
 --------------------
 yes
+no
 yes
 false
 true
