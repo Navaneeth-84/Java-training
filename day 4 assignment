@@ -1,0 +1,48 @@
+// myReplaceFirst() and myReplaceLast()
+
+public class MyFstJavs {
+	String myReplaceFirst(String data, char find, char replace)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=0;i<ar.length-1;++i)
+		{
+			if(ar[i]==find)
+			{
+				ar[i]=replace;
+				break;
+			}
+		}
+		String str= new String(ar);
+		return str;
+	}
+	String myReplaceLast(String data, char find, char replace)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=ar.length-1;i>=0;--i)
+		{
+			if(ar[i]==find)
+			{
+				ar[i]=replace;
+				break;
+			}
+		}
+		String str= new String(ar);
+		return str;
+	}
+public static void main(String[] args)
+{
+	MyFstJavs myFstJavs = new MyFstJavs();
+	System.out.println(myFstJavs.myReplaceFirst("Navaneeth",'a','i'));
+	System.out.println(myFstJavs.myReplaceLast("Navaneeth",'a','i'));
+	
+	System.out.println(myFstJavs.myReplaceFirst("hilarious",'i','o'));
+	System.out.println(myFstJavs.myReplaceLast("hilarious",'i','o'));
+}
+}
+
+// OUTPUT
+
+Nivaneeth
+Navineeth
+holarious
+hilaroous
