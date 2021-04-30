@@ -1,4 +1,4 @@
-// Tasks for day 5
+// Tasks for day 5 (morning)
 
 public class MyTasks {
 	int flag;
@@ -72,3 +72,78 @@ public class MyTasks {
 		System.out.println(myTasks.countCaps("NaVaNeEtH"));
 	}
 }
+
+// OUTPUT
+--------------------
+yes
+yes
+false
+true
+5
+--------------------
+
+// NOON SESSION TASK
+
+
+public class MyTask {
+	
+	boolean isEqual(char c1,char c2)
+	{
+		if((c1 == c2)||(c1+32 == c2)||(c1-32 == c2))
+				return true;
+		else
+				return false;
+	}
+
+	boolean isEqual(String str1,String str2)
+	{
+		char[] ar=str1.toCharArray();
+		char[] ar2=str2.toCharArray();
+		if(ar.length!=ar2.length)
+			return false;
+		else
+		{
+			for(int i=0;i<ar.length;++i)
+			if((ar[i] == ar2[i])||(ar[i]+32 == ar2[i])||(ar[i]-32 == ar2[i]))
+				continue;
+			else
+				return false;
+				
+		}
+		return true;
+		
+	}
+	public static void main(String[] args) {
+		MyTask myTask = new MyTask();
+		
+		System.out.println("isEqual(char,char)\n");
+		System.out.println(myTask.isEqual('A','A'));
+		System.out.println(myTask.isEqual('A','a')); 
+		System.out.println(myTask.isEqual('a','A')); 
+		System.out.println(myTask.isEqual('a','a')); 
+		System.out.println(myTask.isEqual('b','a'));
+		
+		System.out.println("----------------------");
+		
+		System.out.println("isEqual(String,String)\n");
+		System.out.println(myTask.isEqual("NAVANEETH","navaneeth"));
+		System.out.println(myTask.isEqual("Navaneeth","Navneet"));
+		
+	}
+}
+
+//OUTPUT
+----------------------
+isEqual(char,char)
+
+true
+true
+true
+true
+false
+----------------------
+isEqual(String,String)
+
+true
+false
+----------------------
