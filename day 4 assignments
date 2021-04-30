@@ -1,0 +1,74 @@
+// Tasks for day 5
+
+public class MyTasks {
+	int flag;
+	int count=0;
+	// func to check if given str contains upper case char
+	String hasUpper(String data)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=0;i<ar.length;++i)
+		{
+			if(ar[i]>=65 && ar[i]<=90)
+				flag=1;
+		}
+		if(flag==1)
+			return "yes";
+		else
+			return "no";
+	}
+	
+	//func to check if str has number or not
+	
+	String hasNumber(String data)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=0;i<ar.length;++i)
+		{
+			if(ar[i]>=0 && ar[i]<9)
+				flag=1;
+		}
+		if(flag==1)
+			return "yes";
+		else
+			return "no";
+	}
+	
+	//func to check if all chars in a str are upper or not
+	
+	boolean isCapsOnly(String data)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=0;i<ar.length;++i)
+		{
+			if(ar[i]>=65 && ar[i]<=90)
+				continue;
+			else
+				return false;
+		}
+		return true;
+	}
+	
+	//func to count no of cap chars in a given str
+	
+	int countCaps(String data)
+	{
+		char[] ar=data.toCharArray();
+		for(int i=0;i<ar.length;++i)
+		{
+			if(ar[i]>=65 && ar[i]<=90)
+				count++;
+		
+		}
+		
+		return count;
+	}
+	public static void main(String[] args) {
+		MyTasks myTasks = new MyTasks();
+		System.out.println(myTasks.hasUpper("Hello"));
+		System.out.println(myTasks.hasNumber("Navaneeth_33"));
+		System.out.println(myTasks.isCapsOnly("NaVaNeEtH"));
+		System.out.println(myTasks.isCapsOnly("NAVANEETH"));
+		System.out.println(myTasks.countCaps("NaVaNeEtH"));
+	}
+}
