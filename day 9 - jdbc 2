@@ -1,0 +1,89 @@
+//accepting input from user and inserting into table
+
+//database before executing program
+
+NAME                            ROLL        SEM DEPT
+------------------------- ---------- ---------- --------------------
+navaneeth                         84          8 CSE
+rahul                             85          8 CSE
+priya                             29          4 ECE
+saakshi                           25          8 MEC
+anirudh                            7          3 CSE
+
+5 rows selected.
+============================================================
+
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class JdbcAcceptInput {
+
+public static void main(String[] args) {
+
+try
+{
+
+Class.forName("oracle.jdbc.OracleDriver");
+
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","myuser","pass");
+String sql="insert into STUDENT values(?,?,?,?)";
+
+PreparedStatement stat=con.prepareStatement(sql);
+
+Scanner sc=new Scanner(System.in);
+
+System.out.println("Enter student name,roll no, sem, dept :");
+
+String name=sc.nextLine();
+String roll=sc.nextLine();
+String sem=sc.nextLine();
+String dept=sc.nextLine();
+
+stat.setString(1,name);
+stat.setString(2,roll);
+stat.setString(3,sem);
+stat.setString(4,dept);
+
+
+stat.executeUpdate();
+
+
+System.out.println("data stored");
+
+
+
+}
+catch (Exception e) {
+
+e.printStackTrace();
+}
+
+}
+
+}
+
+============================================
+output:
+Enter student name,roll no, sem, dept :
+Dhanush
+12
+5
+CE
+data stored
+============================================
+//database after execution
+
+NAME                            ROLL        SEM DEPT
+------------------------- ---------- ---------- --------------------
+navaneeth                         84          8 CSE
+rahul                             85          8 CSE
+priya                             29          4 ECE
+saakshi                           25          8 MEC
+anirudh                            7          3 CSE
+Dhanush                           12          5 CE
+
+6 rows selected.
